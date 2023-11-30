@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Services.Core.Domain.Entities
 {
-    public class Contents : BaseEntity
+    public class Contents : ValueObject
     {
         public string Name { get; set; }
     }
