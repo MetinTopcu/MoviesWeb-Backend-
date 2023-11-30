@@ -9,7 +9,14 @@ namespace Movies.Services.Core.Domain.Entities
 {
     public class Movies : GeneralEntity, IAggregateRoot
     {
+        public string Name { get; set; }
+        public int AgeLimit { get; set; }
+        public int Duration { get; set; }
         public int Season { get; set; }
         public int Episode { get; set; } // bölüm
+        public int CategoriesId { get; set; }
+        public Categories Categories { get; set; }
+        public int ContentsId { get; set; }
+        public List<Contents> Contents { get; set; }
     }
 }

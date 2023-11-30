@@ -11,12 +11,5 @@ namespace Movies.Services.Core.Domain.Common
     {
         public int Id { get; set; }
         public DateTime CreatedTime { get; set; }
-        public string Name { get; set; }
-        public int AgeLimit { get; set; }
-        public int Duration { get; set; }
-        public int CategoriesId { get; set; }
-        public Categories Categories { get; set; }
-        public int ContentsId { get; set; }
-        public List<Contents> Contents { get; set; }
     }
 }
