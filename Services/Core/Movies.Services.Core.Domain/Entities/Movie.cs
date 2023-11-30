@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Services.Core.Domain.Entities
 {
-    public class Movies : GeneralEntity, IAggregateRoot
+    public class Movie : GeneralEntity, IAggregateRoot
     {
         public string Name { get; set; }
         public int AgeLimit { get; set; }
