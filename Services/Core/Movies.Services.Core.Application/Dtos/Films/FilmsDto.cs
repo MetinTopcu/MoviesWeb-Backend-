@@ -14,7 +14,6 @@ namespace Movies.Services.Core.Application.Dtos.Films
         public int Duration { get; set; }
         public int CategoriesId { get; set; }
         public CategoriesDto Categories { get; set; }
-        public int ContentsId { get; set; }
         public List<ContentsDto> Contents { get; set; }
     }
 }
