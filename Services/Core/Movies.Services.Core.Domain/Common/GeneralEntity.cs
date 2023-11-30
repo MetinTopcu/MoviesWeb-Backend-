@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Services.Core.Domain.Common
 {
-    public class GeneralEntity
+    public abstract class GeneralEntity
     {
         public int Id { get; set; }
         public DateTime CreatedTime { get; set; }

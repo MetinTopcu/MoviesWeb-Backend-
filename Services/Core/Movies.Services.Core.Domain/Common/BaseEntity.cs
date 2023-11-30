@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Services.Core.Domain.Common
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         public int Id { get; set; }
     }
