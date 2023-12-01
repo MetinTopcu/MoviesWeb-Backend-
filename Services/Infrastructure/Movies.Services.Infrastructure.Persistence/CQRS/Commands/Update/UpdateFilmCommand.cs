@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Services.Infrastructure.Persistence.CQRS.Commands.Update
 {
-    public class UpdateFilmCommand : IRequest<ResponseDto<FilmsDto>> //response
+    public class UpdateFilmCommand : IRequest<ResponseDto<NoContentDto>> //response
     {
         //requestler
         public int Id { get; set; }
@@ -18,6 +18,6 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Commands.Update
         public int AgeLimit { get; set; }
         public int Duration { get; set; }
         public int CategoriesId { get; set; }
-        public List<Contents> Contents { get; set; }
+        public Contents Contents { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Movies.Services.Core.Application.Dtos;
 using Movies.Services.Core.Application.Dtos.Films;
+using Movies.Services.Core.Domain.Entities;
 using Movies.Shared.Dtos;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,6 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Commands.Create
         public int AgeLimit { get; set; }
         public int Duration { get; set; }
         public int CategoriesId { get; set; }
-        public List<ContentsDto> Contents { get; set; }
+        public Contents Contents { get; set; }
     }
 }

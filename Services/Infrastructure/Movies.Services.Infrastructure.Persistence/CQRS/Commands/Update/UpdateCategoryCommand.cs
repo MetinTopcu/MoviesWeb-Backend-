@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Services.Infrastructure.Persistence.CQRS.Commands.Update
 {
-    public class UpdateCategoryCommand : IRequest<ResponseDto<CategoriesDto>>
+    public class UpdateCategoryCommand : IRequest<ResponseDto<NoContentDto>>
     {
 
         //requestler

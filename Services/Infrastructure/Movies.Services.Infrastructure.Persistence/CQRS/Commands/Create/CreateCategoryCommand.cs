@@ -13,6 +13,6 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Commands.Create
     public class CreateCategoryCommand : IRequest<ResponseDto<CategoriesDto>> // response
     {
         //requestler
-        public int Name { get; set; }
+        public string Name { get; set; }
     }
 }

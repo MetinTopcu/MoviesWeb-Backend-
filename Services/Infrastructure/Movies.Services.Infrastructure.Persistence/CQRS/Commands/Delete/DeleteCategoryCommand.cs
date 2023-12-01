@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Services.Infrastructure.Persistence.CQRS.Commands.Delete
 {
-    public class DeleteCategoryCommand : IRequest<ResponseDto<CategoriesDto>> // response
+    public class DeleteCategoryCommand : IRequest<ResponseDto<NoContentDto>> // response
     {
         //requestler
         public int Id { get; set; }
