@@ -20,7 +20,7 @@ namespace Movies.Services.Infrastructure.Persistence.Configurations
             builder.Property(x => x.Duration).IsRequired();
 
             builder.HasOne(x => x.Categories).WithMany(x => x.Movie).HasForeignKey(x => x.CategoriesId);
-            builder.OwnsMany(x => x.Contents).WithOwner();
+            builder.OwnsOne(x => x.Contents).WithOwner();
         }
     }
 }
