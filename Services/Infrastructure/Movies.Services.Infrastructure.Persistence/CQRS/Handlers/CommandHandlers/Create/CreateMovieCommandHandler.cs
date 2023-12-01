@@ -33,7 +33,7 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.CommandHandle
             newMovie.Season = request.Season;
             newMovie.CategoriesId = request.CategoriesId;
             newMovie.Contents = request.Contents;
-            newMovie.CreatedTime = DateTime.Now;
+            //newMovie.CreatedTime = DateTime.Now;
 
             await _context.Movies.AddAsync(newMovie);
 

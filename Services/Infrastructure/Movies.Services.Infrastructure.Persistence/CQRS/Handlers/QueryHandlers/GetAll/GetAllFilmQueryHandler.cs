@@ -26,7 +26,7 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.QueryHandlers
 
         public async Task<ResponseDto<List<FilmsDto>>> Handle(GetAllFilmQuery request, CancellationToken cancellationToken)
         {
-            var film = await _context.Categories.ToListAsync();
+            var film = await _context.Films.ToListAsync();
 
             var filmDto = _mapper.Map<List<FilmsDto>>(film);
 
