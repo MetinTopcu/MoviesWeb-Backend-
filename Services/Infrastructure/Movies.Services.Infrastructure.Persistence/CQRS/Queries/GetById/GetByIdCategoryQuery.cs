@@ -11,6 +11,6 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Queries.GetById
 {
     public class GetByIdCategoryQuery : IRequest<ResponseDto<CategoriesDto>>
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
     }
 }

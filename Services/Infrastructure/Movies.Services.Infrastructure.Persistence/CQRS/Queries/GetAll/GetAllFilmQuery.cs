@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Services.Infrastructure.Persistence.CQRS.Queries.GetAll
 {
-    public class GetAllFilmQuery : IRequest<ResponseDto<FilmsDto>>
+    public class GetAllFilmQuery : IRequest<ResponseDto<List<FilmsDto>>>
     {
     }
 }

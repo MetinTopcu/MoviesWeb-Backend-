@@ -11,6 +11,6 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Queries.GetById
 {
     public class GetByIdMovieQuery : IRequest<ResponseDto<MoviesDto>>
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
     }
 }
