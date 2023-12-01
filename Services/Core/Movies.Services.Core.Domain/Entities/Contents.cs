@@ -9,6 +9,6 @@ namespace Movies.Services.Core.Domain.Entities
 {
     public class Contents : ValueObject
     {
-        public string Name { get; set; }
+        public List<string> Name { get; set; }
     }
 }

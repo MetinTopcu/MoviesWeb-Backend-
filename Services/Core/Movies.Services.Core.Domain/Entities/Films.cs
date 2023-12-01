@@ -14,6 +14,6 @@ namespace Movies.Services.Core.Domain.Entities
         public int Duration { get; set; }
         public int CategoriesId { get; set; }
         public Categories Categories { get; set; }
-        public List<Contents> Contents { get; set; }
+        public Contents Contents { get; set; }
     }
 }
