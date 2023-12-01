@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Movies.Services.Core.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,6 @@ namespace Movies.Services.Core.Application.Dtos.Movies
         public int Season { get; set; }
         public int Episode { get; set; } // bölüm
         public int CategoriesId { get; set; }
-        public int ContentsId { get; set; }
+        public List<Contents> Contents { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Movies.Services.Core.Application.CommonDtos;
+using Movies.Services.Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,6 @@ namespace Movies.Services.Core.Application.Dtos.Films
         public int AgeLimit { get; set; }
         public int Duration { get; set; }
         public int CategoriesId { get; set; }
-        public int ContentsId { get; set; }
+        public List<Contents> Contents { get; set; }
     }
 }
