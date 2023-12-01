@@ -14,6 +14,6 @@ namespace Movies.Services.Core.Application.Dtos.Films
         public int AgeLimit { get; set; }
         public int Duration { get; set; }
         public int CategoriesId { get; set; }
-        public List<Contents> Contents { get; set; }
+        public Contents Contents { get; set; }
     }
 }

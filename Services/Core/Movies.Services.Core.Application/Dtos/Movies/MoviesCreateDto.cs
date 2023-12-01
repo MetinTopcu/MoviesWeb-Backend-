@@ -15,6 +15,6 @@ namespace Movies.Services.Core.Application.Dtos.Movies
         public int Season { get; set; }
         public int Episode { get; set; } // bölüm
         public int CategoriesId { get; set; }
-        public List<Contents> Contents { get; set; }
+        public Contents Contents { get; set; }
     }
 }

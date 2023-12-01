@@ -9,6 +9,6 @@ namespace Movies.Services.Core.Application.Dtos
 {
     public class ContentsDto
     {
-        public string Name { get; set; }
+        public List<string> Name { get; set; }
     }
 }
