@@ -13,15 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{209E7F4C-B69B-4184-B80F-9A07228DE6E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Services.Core.Domain", "Services\Core\Movies.Services.Core.Domain\Movies.Services.Core.Domain.csproj", "{EEBF5E76-1AF7-49F3-AFB6-06EC09C04870}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Services.Core.Domain", "Services\Core\Movies.Services.Core.Domain\Movies.Services.Core.Domain.csproj", "{EEBF5E76-1AF7-49F3-AFB6-06EC09C04870}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Services.Core.Application", "Services\Core\Movies.Services.Core.Application\Movies.Services.Core.Application.csproj", "{3395B506-121D-4CDE-AAE0-218C64F2433B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Services.Core.Application", "Services\Core\Movies.Services.Core.Application\Movies.Services.Core.Application.csproj", "{3395B506-121D-4CDE-AAE0-218C64F2433B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Services.Infrastructure.Persistence", "Services\Infrastructure\Movies.Services.Infrastructure.Persistence\Movies.Services.Infrastructure.Persistence.csproj", "{9150C8EB-6861-4B90-A650-B9A5EE08BEBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Services.Infrastructure.Persistence", "Services\Infrastructure\Movies.Services.Infrastructure.Persistence\Movies.Services.Infrastructure.Persistence.csproj", "{9150C8EB-6861-4B90-A650-B9A5EE08BEBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Services.Infrastructure.Infrastructure", "Services\Infrastructure\Movies.Services.Infrastructure.Infrastructure\Movies.Services.Infrastructure.Infrastructure.csproj", "{74168DBB-D8B6-48FB-8913-D94FA5BF211F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Services.Infrastructure.Infrastructure", "Services\Infrastructure\Movies.Services.Infrastructure.Infrastructure\Movies.Services.Infrastructure.Infrastructure.csproj", "{74168DBB-D8B6-48FB-8913-D94FA5BF211F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Services.Presentation.API", "Services\Presentation\Movies.Services.Presentation.API\Movies.Services.Presentation.API.csproj", "{9198A5F1-57B4-487B-BBD1-7001881FBBD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Services.Presentation.API", "Services\Presentation\Movies.Services.Presentation.API\Movies.Services.Presentation.API.csproj", "{9198A5F1-57B4-487B-BBD1-7001881FBBD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Shared", "Shared\Movies.Shared\Movies.Shared.csproj", "{A7DE3378-6310-41EB-B3F7-925262D11B39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{9198A5F1-57B4-487B-BBD1-7001881FBBD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9198A5F1-57B4-487B-BBD1-7001881FBBD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9198A5F1-57B4-487B-BBD1-7001881FBBD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7DE3378-6310-41EB-B3F7-925262D11B39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7DE3378-6310-41EB-B3F7-925262D11B39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7DE3378-6310-41EB-B3F7-925262D11B39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7DE3378-6310-41EB-B3F7-925262D11B39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{9150C8EB-6861-4B90-A650-B9A5EE08BEBA} = {AE030CFD-EFF5-4984-8435-F3B0DF6ED422}
 		{74168DBB-D8B6-48FB-8913-D94FA5BF211F} = {AE030CFD-EFF5-4984-8435-F3B0DF6ED422}
 		{9198A5F1-57B4-487B-BBD1-7001881FBBD3} = {209E7F4C-B69B-4184-B80F-9A07228DE6E6}
+		{A7DE3378-6310-41EB-B3F7-925262D11B39} = {C06C629D-D078-4913-BB70-85969D45C54B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BBDD2A9A-C37A-4C17-B362-7A3A4D0A6377}
