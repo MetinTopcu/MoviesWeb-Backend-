@@ -11,5 +11,9 @@ namespace Movies.Services.Core.Domain.Entities
     {
         public string Name { get; set; }
 
+        public ICollection<Films> Films { get; set; }
+
+        public ICollection<Movie> Movie { get; set; }
+
     }
 }
