@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Movies.Services.Core.Application.Dtos;
 using Movies.Services.Infrastructure.Persistence.CQRS.Queries.GetById;
 using Movies.Shared.Dtos;
@@ -24,7 +25,12 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.QueryHandlers
 
         public async Task<ResponseDto<CategoriesDto>> Handle(GetByIdCategoryQuery request, CancellationToken cancellationToken)
         {
-            var category = _context.Categories.FirstOrDefault(c => c.Id == request.Id);
+            var category = await _context.Categories.Where(c => c.Id == request.Id).FirstOrDefaultAsync();
+
+            if(category == null)
+            {
+                return null;
+            }
 
             var categoryDto = _mapper.Map<CategoriesDto>(category);
 

@@ -27,7 +27,12 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.QueryHandlers
 
         public async Task<ResponseDto<FilmsDto>> Handle(GetByIdFilmQuery request, CancellationToken cancellationToken)
         {
-            var films = _context.Films.FirstOrDefault(x => x.Id == request.Id);
+            var films = await _context.Films.Where(x => x.Id == request.Id).FirstOrDefaultAsync();
+
+            if(films == null)
+            {
+                return null;
+            }
 
             var filmsDto = _mapper.Map<FilmsDto>(films);
 

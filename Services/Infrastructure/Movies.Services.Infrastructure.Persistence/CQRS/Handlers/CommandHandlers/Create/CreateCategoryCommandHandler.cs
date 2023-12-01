@@ -23,14 +23,13 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.CommandHandle
         public async Task<ResponseDto<CategoriesDto>> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
             Categories newCategories = new Categories();
-            _context.Categories.AddAsync(new()
-            {
-                Name = request.Name
-            });
+            newCategories.Name = request.Name;
 
-            _context.SaveChangesAsync();
+            await _context.Categories.AddAsync(newCategories);
 
-            return ResponseDto<CategoriesDto>.Success(new CategoriesDto { Id = newCategories.Id }, 201);
+            await _context.SaveChangesAsync();
+            // örnek olsun diye burada data'yı mapper'lamadım new CategoriesDto { Id = newCategories.Id, Name = newCategories.Name } 
+            return ResponseDto<CategoriesDto>.Success(new CategoriesDto { Id = newCategories.Id, Name = newCategories.Name }, 201);
         }
     }
 }

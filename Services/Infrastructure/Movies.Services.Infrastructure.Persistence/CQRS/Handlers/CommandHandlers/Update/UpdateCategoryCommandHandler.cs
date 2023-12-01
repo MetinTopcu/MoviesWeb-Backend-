@@ -20,14 +20,17 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.CommandHandle
 
         public async Task<ResponseDto<NoContentDto>> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
         {
-            var updateCategory = _context.Categories.FirstOrDefault(x => x.Id == request.Id);
-            _context.Categories.Update(new()
-            {
-                Name = request.Name
-                //Id = request.Id,
-            });
+            var updateCategory = _context.Categories.Where(x => x.Id == request.Id).FirstOrDefault();
 
-            _context.SaveChangesAsync();
+            if (updateCategory == null)
+            {
+                return null;
+            }
+
+            updateCategory.Name = request.Name;
+            //_context.Categories.Update(updateCategory);
+
+            await _context.SaveChangesAsync();
 
             return ResponseDto<NoContentDto>.Success(204);
         }

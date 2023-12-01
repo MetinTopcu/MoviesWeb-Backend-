@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Movies.Services.Core.Application.Dtos.Films;
 using Movies.Services.Core.Application.Dtos.Movies;
 using Movies.Services.Infrastructure.Persistence.CQRS.Queries.GetAll;
@@ -25,7 +26,7 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.QueryHandlers
 
         public async Task<ResponseDto<List<MoviesDto>>> Handle(GetAllMovieQuery request, CancellationToken cancellationToken)
         {
-            var movie = _context.Categories.FirstOrDefault();
+            var movie = await _context.Categories.ToListAsync();
 
             var movieDto = _mapper.Map<List<MoviesDto>>(movie);
 

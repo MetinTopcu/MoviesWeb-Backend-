@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Movies.Services.Core.Domain.Entities;
 using Movies.Services.Infrastructure.Persistence.CQRS.Commands.Delete;
 using Movies.Shared.Dtos;
@@ -21,7 +22,13 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.CommandHandle
 
         public async Task<ResponseDto<NoContentDto>> Handle(DeleteMovieCommand request, CancellationToken cancellationToken)
         {
-            var deleteMovie = _context.Movies.FirstOrDefault(x => x.Id == request.Id);
+            var deleteMovie = await _context.Movies.Where(x => x.Id == request.Id).FirstOrDefaultAsync();
+
+            if (deleteMovie == null)
+            {
+                return null;
+            }
+
             _context.Movies.Remove(deleteMovie);
             await _context.SaveChangesAsync();
 

@@ -20,15 +20,20 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.CommandHandle
 
         public async Task<ResponseDto<NoContentDto>> Handle(UpdateMovieCommand request, CancellationToken cancellationToken)
         {
-            var updateMovie = _context.Movies.FirstOrDefault(x => x.Id == request.Id);
-            _context.Movies.Update(new()
+            var updateMovie = _context.Movies.Where(x => x.Id == request.Id).FirstOrDefault();
+
+            if (updateMovie == null)
             {
-                Name = request.Name,
-                AgeLimit = request.AgeLimit,
-                Duration = request.Duration,
-                CategoriesId = request.CategoriesId,
-                Contents = request.Contents
-            });
+                return null;
+            }
+
+            updateMovie.Name = request.Name;
+            updateMovie.AgeLimit = request.AgeLimit;
+            updateMovie.Duration = request.Duration;
+            updateMovie.CategoriesId = request.CategoriesId;
+            updateMovie.Contents = request.Contents;
+
+            //_context.Movies.Update(updateMovie);
 
             await _context.SaveChangesAsync();
 
