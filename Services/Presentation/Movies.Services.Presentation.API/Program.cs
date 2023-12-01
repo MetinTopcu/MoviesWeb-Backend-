@@ -1,14 +1,16 @@
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Movies.Services.Core.Application.Mapping;
 using Movies.Services.Infrastructure.Persistence;
+using Movies.Services.Infrastructure.Persistence.CQRS.Handlers.CommandHandlers;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -21,6 +23,11 @@ options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSql"), optio
     option.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name);
 }
 ));
+
+
+builder.Services.AddMediatR(typeof(AppDbContext).Assembly);
+
+builder.Services.AddControllers();
 
 var app = builder.Build();
 

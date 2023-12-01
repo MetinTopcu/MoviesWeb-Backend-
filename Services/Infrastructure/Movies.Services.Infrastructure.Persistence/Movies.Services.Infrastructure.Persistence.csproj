@@ -21,9 +21,4 @@
     <ProjectReference Include="..\..\Core\Movies.Services.Core.Application\Movies.Services.Core.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="CQRS\Handlers\CommandHandlers\" />
-    <Folder Include="CQRS\Handlers\QueryHandlers\" />
-  </ItemGroup>
-
 </Project>
