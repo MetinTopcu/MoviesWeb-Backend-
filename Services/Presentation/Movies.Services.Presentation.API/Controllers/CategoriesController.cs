@@ -14,7 +14,6 @@ namespace Movies.Services.Presentation.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [ServiceFilter(typeof(NotFoundFilter<Categories>))]
     public class CategoriesController : CustomBaseController
     {
         private readonly IMediator _mediator;
@@ -32,7 +31,7 @@ namespace Movies.Services.Presentation.API.Controllers
             return CreateActionResultInstance(response);
         }
 
-        
+        [ServiceFilter(typeof(NotFoundFilter<Categories>))]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -57,6 +56,7 @@ namespace Movies.Services.Presentation.API.Controllers
             return CreateActionResultInstance(response);
         }
 
+        [ServiceFilter(typeof(NotFoundFilter<Categories>))]
         [HttpDelete("{id}")]  //id belirtiyoruz ki api/questions/5  5 id li veriyi siler.
         public async Task<IActionResult> Delete(int id)
         {
