@@ -1,17 +1,20 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Movies.Services.Core.Domain.Entities;
 using Movies.Services.Infrastructure.Persistence.CQRS.Commands.Create;
 using Movies.Services.Infrastructure.Persistence.CQRS.Commands.Delete;
 using Movies.Services.Infrastructure.Persistence.CQRS.Commands.Update;
 using Movies.Services.Infrastructure.Persistence.CQRS.Queries.GetAll;
 using Movies.Services.Infrastructure.Persistence.CQRS.Queries.GetById;
+using Movies.Services.Presentation.API.Filters;
 using Movies.Shared.ControllerBases;
 
 namespace Movies.Services.Presentation.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ServiceFilter(typeof(NotFoundFilter<Categories>))]
     public class CategoriesController : CustomBaseController
     {
         private readonly IMediator _mediator;
@@ -29,6 +32,7 @@ namespace Movies.Services.Presentation.API.Controllers
             return CreateActionResultInstance(response);
         }
 
+        
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {

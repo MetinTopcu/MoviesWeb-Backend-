@@ -1,11 +1,13 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Movies.Services.Core.Domain.Entities;
 using Movies.Services.Infrastructure.Persistence.CQRS.Commands.Create;
 using Movies.Services.Infrastructure.Persistence.CQRS.Commands.Delete;
 using Movies.Services.Infrastructure.Persistence.CQRS.Commands.Update;
 using Movies.Services.Infrastructure.Persistence.CQRS.Queries.GetAll;
 using Movies.Services.Infrastructure.Persistence.CQRS.Queries.GetById;
+using Movies.Services.Presentation.API.Filters;
 using Movies.Shared.ControllerBases;
 using Movies.Shared.Dtos;
 
@@ -13,6 +15,7 @@ namespace Movies.Services.Presentation.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ServiceFilter(typeof(NotFoundFilter<Films>))]
     public class FilmsController : CustomBaseController
     {
         private readonly IMediator _mediator;

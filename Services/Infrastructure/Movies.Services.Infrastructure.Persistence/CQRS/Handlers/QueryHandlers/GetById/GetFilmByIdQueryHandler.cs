@@ -29,11 +29,6 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.QueryHandlers
         {
             var films = await _context.Films.Where(x => x.Id == request.Id).FirstOrDefaultAsync();
 
-            if(films == null)
-            {
-                return null;
-            }
-
             var filmsDto = _mapper.Map<FilmsDto>(films);
 
             return ResponseDto<FilmsDto>.Success(filmsDto, 200);

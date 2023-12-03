@@ -4,6 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Movies.Services.Core.Application.Mapping;
 using Movies.Services.Infrastructure.Persistence;
 using Movies.Services.Infrastructure.Persistence.CQRS.Handlers.CommandHandlers;
+using Movies.Services.Presentation.API.Filters;
+using Movies.Services.Presentation.API.Middlewares;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,7 +26,7 @@ options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSql"), optio
 }
 ));
 
-
+builder.Services.AddScoped(typeof(NotFoundFilter<>));
 builder.Services.AddMediatR(typeof(AppDbContext).Assembly);
 
 builder.Services.AddControllers();
@@ -39,7 +41,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCustomException();
 app.UseAuthorization();
 
 app.MapControllers();

@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Movies.Services.Core.Application.Dtos;
+using Movies.Services.Core.Application.Exceptions;
 using Movies.Services.Infrastructure.Persistence.CQRS.Queries.GetById;
 using Movies.Shared.Dtos;
 using System;
@@ -27,10 +28,12 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.QueryHandlers
         {
             var category = await _context.Categories.Where(c => c.Id == request.Id).FirstOrDefaultAsync();
 
-            if(category == null)
-            {
-                return null;
-            }
+            //NotFoundFilter Eklediğimiz için eğer null ise buraya kadar bile gelmiyor kod breakpoint ile gördüm
+            //if(category == null)
+            //{
+            //    //throw new ClientSideException($"{typeof(CategoriesDto).Name} not found");
+            //    return ResponseDto<CategoriesDto>.Fail($"{typeof(CategoriesDto).Name}({request.Id}) not found", 404);
+            //}
 
             var categoryDto = _mapper.Map<CategoriesDto>(category);
 
