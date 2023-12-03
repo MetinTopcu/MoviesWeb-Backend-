@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Movies.Services.Core.Application.Dtos.Films;
 using Movies.Services.Core.Domain.Common;
 using Movies.Services.Core.Domain.Entities;
@@ -35,8 +36,9 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.CommandHandle
             newFilm.Duration = request.Duration;
             newFilm.CategoriesId = request.CategoriesId;
             newFilm.Contents = contentDto;
+            newFilm.Categories = await _context.Categories.Where(x => x.Id == request.CategoriesId).FirstOrDefaultAsync();
             //newFilm.CreatedTime = DateTime.Now;
-            
+
             await _context.Films.AddAsync(newFilm);
 
             //await _context.Films.AddAsync(new() // newFilm kullanmadan da veri aktarabileceğimiz bir yöntem

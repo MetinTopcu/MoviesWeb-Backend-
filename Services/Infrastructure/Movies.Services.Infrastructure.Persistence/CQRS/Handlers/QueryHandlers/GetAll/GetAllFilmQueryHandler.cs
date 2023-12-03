@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Movies.Services.Core.Application.Dtos;
 using Movies.Services.Core.Application.Dtos.Films;
+using Movies.Services.Core.Domain.Entities;
 using Movies.Services.Infrastructure.Persistence.CQRS.Queries.GetAll;
 using Movies.Shared.Dtos;
 using System;
@@ -27,6 +28,19 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.QueryHandlers
         public async Task<ResponseDto<List<FilmsDto>>> Handle(GetAllFilmQuery request, CancellationToken cancellationToken)
         {
             var film = await _context.Films.ToListAsync();
+
+            if(film.Any())
+            {
+                film.ForEach(async x =>
+                {
+                    x.Categories = await _context.Categories.Where(y => y.Id == x.CategoriesId).FirstOrDefaultAsync();
+                });
+            }
+            else
+            {
+                film = new List<Films>();
+            }
+            
 
             var filmDto = _mapper.Map<List<FilmsDto>>(film);
 

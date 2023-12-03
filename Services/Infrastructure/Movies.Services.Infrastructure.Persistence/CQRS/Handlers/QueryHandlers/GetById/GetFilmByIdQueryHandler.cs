@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Movies.Services.Core.Domain.Entities;
 
 namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.QueryHandlers.GetById
 {
@@ -28,6 +29,8 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.QueryHandlers
         public async Task<ResponseDto<FilmsDto>> Handle(GetByIdFilmQuery request, CancellationToken cancellationToken)
         {
             var films = await _context.Films.Where(x => x.Id == request.Id).FirstOrDefaultAsync();
+            
+            films.Categories = await _context.Categories.Where(x => x.Id == films.CategoriesId).FirstOrDefaultAsync();
 
             var filmsDto = _mapper.Map<FilmsDto>(films);
 

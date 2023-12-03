@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Movies.Services.Core.Application.Dtos;
 using Movies.Services.Core.Application.Dtos.Movies;
 using Movies.Services.Core.Domain.Entities;
@@ -36,19 +37,7 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.CommandHandle
             newMovie.Season = request.Season;
             newMovie.CategoriesId = request.CategoriesId;
             newMovie.Contents = contentDto;
-            //newMovie.CreatedTime = DateTime.Now;
-
-            //request.Categories
-
-            //var newCategoriesItem = new Categories();
-            //newCategoriesItem.Id = request.CategoriesId;
-            //int categoriesId = newCategoriesItem.Id;
-            //newMovie.Categories.Name = newCategoriesItem.Name;
-
-
-            //var newCategories = new Categories { Id = request.CategoriesId };
-            //newMovie.Categories.Id = newCategories.Id;
-
+            newMovie.Categories = await _context.Categories.Where(x => x.Id == request.CategoriesId).FirstOrDefaultAsync();
 
             await _context.Movies.AddAsync(newMovie);
 

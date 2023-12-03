@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Movies.Services.Core.Application.Dtos.Films;
 using Movies.Services.Core.Application.Dtos.Movies;
+using Movies.Services.Core.Domain.Entities;
 using Movies.Services.Infrastructure.Persistence.CQRS.Queries.GetAll;
 using Movies.Shared.Dtos;
 using System;
@@ -27,6 +28,18 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.QueryHandlers
         public async Task<ResponseDto<List<MoviesDto>>> Handle(GetAllMovieQuery request, CancellationToken cancellationToken)
         {
             var movie = await _context.Movies.ToListAsync();
+
+            if(movie.Any())
+            {
+                movie.ForEach(async x =>
+                {   //FirstOrDefaultAsync kullanınca hata alıyorum o yüzden FirstOrDefault kullandım.
+                    x.Categories = _context.Categories.Where(y => y.Id == x.CategoriesId).FirstOrDefault();
+                });
+            }
+            else
+            {
+                movie = new List<Movie>();
+            }
 
             var movieDto = _mapper.Map<List<MoviesDto>>(movie);
 
