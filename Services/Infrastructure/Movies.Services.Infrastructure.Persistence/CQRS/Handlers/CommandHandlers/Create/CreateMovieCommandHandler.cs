@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Movies.Services.Core.Application.Dtos;
 using Movies.Services.Core.Application.Dtos.Movies;
 using Movies.Services.Core.Domain.Entities;
 using Movies.Services.Infrastructure.Persistence.CQRS.Commands.Create;
@@ -25,6 +26,8 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.CommandHandle
 
         public async Task<ResponseDto<MoviesDto>> Handle(CreateMovieCommand request, CancellationToken cancellationToken)
         {
+            var contentDto = _mapper.Map<Contents>(request.Contents);
+
             Movie newMovie = new Movie();
             newMovie.Name = request.Name;
             newMovie.AgeLimit = request.AgeLimit;
@@ -32,8 +35,20 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.CommandHandle
             newMovie.Episode  = request.Episode;
             newMovie.Season = request.Season;
             newMovie.CategoriesId = request.CategoriesId;
-            newMovie.Contents = request.Contents;
+            newMovie.Contents = contentDto;
             //newMovie.CreatedTime = DateTime.Now;
+
+            //request.Categories
+
+            //var newCategoriesItem = new Categories();
+            //newCategoriesItem.Id = request.CategoriesId;
+            //int categoriesId = newCategoriesItem.Id;
+            //newMovie.Categories.Name = newCategoriesItem.Name;
+
+
+            //var newCategories = new Categories { Id = request.CategoriesId };
+            //newMovie.Categories.Id = newCategories.Id;
+
 
             await _context.Movies.AddAsync(newMovie);
 

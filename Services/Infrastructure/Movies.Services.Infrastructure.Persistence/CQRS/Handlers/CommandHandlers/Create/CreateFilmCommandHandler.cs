@@ -27,12 +27,14 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Handlers.CommandHandle
 
         public async Task<ResponseDto<FilmsDto>> Handle(CreateFilmCommand request, CancellationToken cancellationToken)
         {
+            var contentDto = _mapper.Map<Contents>(request.Contents);
+
             Films newFilm = new Films();
             newFilm.Name = request.Name;
             newFilm.AgeLimit = request.AgeLimit;
             newFilm.Duration = request.Duration;
             newFilm.CategoriesId = request.CategoriesId;
-            newFilm.Contents = request.Contents;
+            newFilm.Contents = contentDto;
             //newFilm.CreatedTime = DateTime.Now;
             
             await _context.Films.AddAsync(newFilm);

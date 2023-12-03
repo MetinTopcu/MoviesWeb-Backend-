@@ -20,6 +20,6 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Commands.Create
         public int Season { get; set; }
         public int Episode { get; set; } // bölüm
         public int CategoriesId { get; set; }
-        public Contents Contents { get; set; }
+        public ContentsDto Contents { get; set; }
     }
 }

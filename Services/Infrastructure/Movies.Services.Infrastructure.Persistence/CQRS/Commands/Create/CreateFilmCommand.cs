@@ -18,6 +18,6 @@ namespace Movies.Services.Infrastructure.Persistence.CQRS.Commands.Create
         public int AgeLimit { get; set; }
         public int Duration { get; set; }
         public int CategoriesId { get; set; }
-        public Contents Contents { get; set; }
+        public ContentsDto Contents { get; set; }
     }
 }
